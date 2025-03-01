@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <fstream>
 using namespace std;
 
 class user
@@ -44,6 +45,12 @@ public:
             cout << "Wrong Name\n";
             return 0;
         }
+    }
+
+    void savedata(){
+        ofstream userfile("user.txt");
+        userfile<<" username : "<<name<<endl<<" Password : "<<password<<endl<<" Balance : "<<balance<<endl;
+        userfile.close();
     }
 };
 
@@ -111,7 +118,7 @@ int main()
         }
 
         default:
-            break;
+            break;  
         }
         cout << "** Would you like to continue : **\n";
         cout << " 1 - Yes \n";
@@ -127,6 +134,8 @@ int main()
             goto start;
         }
     }
+
+    u1.savedata();
 
     system("pause");
     system("CLS");
